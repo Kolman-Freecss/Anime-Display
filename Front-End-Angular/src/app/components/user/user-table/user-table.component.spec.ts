@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AnimeComponent } from './anime.component';
+import { UserTableComponent } from './user-table.component';
 
-describe('AnimeComponent', () => {
-  let component: AnimeComponent;
-  let fixture: ComponentFixture<AnimeComponent>;
+describe('UserTableComponent', () => {
+  let component: UserTableComponent;
+  let fixture: ComponentFixture<UserTableComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AnimeComponent ]
+      declarations: [ UserTableComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AnimeComponent);
+    fixture = TestBed.createComponent(UserTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

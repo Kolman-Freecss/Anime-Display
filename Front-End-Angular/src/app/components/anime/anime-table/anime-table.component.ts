@@ -3,11 +3,11 @@ import { MockAnime } from '../../../mocks/mock-anime';
 import { Anime } from '../anime';
 
 @Component({
-  selector: 'app-anime',
-  templateUrl: './anime.component.html',
-  styleUrls: ['./anime.component.css']
+  selector: 'app-anime-table',
+  templateUrl: './anime-table.component.html',
+  styleUrls: ['./anime-table.component.css']
 })
-export class AnimeComponent implements OnInit {
+export class AnimeTableComponent implements OnInit {
 
   listAnime : Anime[];
 

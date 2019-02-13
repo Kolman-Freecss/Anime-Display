@@ -3,20 +3,26 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AnimeComponent } from './components/anime/anime-table/anime.component';
-import { UserComponent } from './components/user/user.component';
-import { MangaComponent } from './components/manga/manga-table/manga.component';
-import { FilmComponent } from './components/film/film-table/film.component';
 import { AnimeDetailComponent } from './components/anime/anime-detail/anime-detail.component';
+import { AnimeTableComponent } from './components/anime/anime-table/anime-table.component';
+import { FilmTableComponent } from './components/film/film-table/film-table.component';
+import { FilmDetailComponent } from './components/film/film-detail/film-detail.component';
+import { MangaDetailComponent } from './components/manga/manga-detail/manga-detail.component';
+import { MangaTableComponent } from './components/manga/manga-table/manga-table.component';
+import { UserTableComponent } from './components/user/user-table/user-table.component';
+import { UserDetailComponent } from './components/user/user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AnimeComponent,
-    UserComponent,
-    MangaComponent,
-    FilmComponent,
-    AnimeDetailComponent
+    AnimeDetailComponent,
+    AnimeTableComponent,
+    FilmTableComponent,
+    FilmDetailComponent,
+    MangaDetailComponent,
+    MangaTableComponent,
+    UserTableComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
