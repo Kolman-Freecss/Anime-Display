@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Anime } from '../anime';
 import { AnimeService } from '../../../services/anime.service';
 import { LoggerService } from '../../../services/logger.service';
+import { Router } from '@angular/router';
+import { ANIME_FORM } from '../../../paths';
 
 
 @Component({
@@ -17,6 +19,7 @@ export class AnimeTableComponent implements OnInit {
   constructor(
     private animeService : AnimeService,
     private loggerService : LoggerService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -35,6 +38,10 @@ export class AnimeTableComponent implements OnInit {
     this.loggerService.log("Retrieving the information of Animes");
     this.animeService.getAnimes()
     .subscribe(animes => this.listAnime = animes);
+  }
+
+  clickAnimeForm(): void {
+    this.router.navigate([ANIME_FORM]);
   }
 
 }

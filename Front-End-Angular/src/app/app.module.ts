@@ -14,6 +14,9 @@ import { UserTableComponent } from './components/user/user-table/user-table.comp
 import { UserDetailComponent } from './components/user/user-detail/user-detail.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { MockAnime } from './mocks/mock-anime';
+import { AnimeFormComponent } from './components/anime/anime-form/anime-form.component';
+import { FooterComponent } from './components/design/footer/footer.component';
+import { HeaderComponent } from './components/design/header/header.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { MockAnime } from './mocks/mock-anime';
     MangaTableComponent,
     UserTableComponent,
     UserDetailComponent,
-    MessagesComponent
+    MessagesComponent,
+    AnimeFormComponent,
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
