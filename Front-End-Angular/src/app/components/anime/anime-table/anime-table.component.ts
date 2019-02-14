@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Anime } from '../anime';
 import { AnimeService } from '../../../services/anime.service';
+import { LoggerService } from '../../../services/logger.service';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class AnimeTableComponent implements OnInit {
   animeSelected : Anime;
 
   constructor(
-    private animeService : AnimeService
+    private animeService : AnimeService,
+    private loggerService : LoggerService,
   ) { }
 
   ngOnInit() {
@@ -30,6 +32,7 @@ export class AnimeTableComponent implements OnInit {
   */
 
   getAnimes() : void {
+    this.loggerService.log("Retrieving the information of Animes");
     this.animeService.getAnimes()
     .subscribe(animes => this.listAnime = animes);
   }

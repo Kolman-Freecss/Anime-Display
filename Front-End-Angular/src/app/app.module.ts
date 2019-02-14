@@ -13,6 +13,7 @@ import { MangaTableComponent } from './components/manga/manga-table/manga-table.
 import { UserTableComponent } from './components/user/user-table/user-table.component';
 import { UserDetailComponent } from './components/user/user-detail/user-detail.component';
 import { MessagesComponent } from './components/messages/messages.component';
+import { MockAnime } from './mocks/mock-anime';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import { MessagesComponent } from './components/messages/messages.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    MockAnime,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
