@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
 import { AnimeDetailComponent } from './components/anime/anime-detail/anime-detail.component';
 import { AnimeTableComponent } from './components/anime/anime-table/anime-table.component';
 import { FilmTableComponent } from './components/film/film-table/film-table.component';
@@ -11,6 +12,7 @@ import { MangaDetailComponent } from './components/manga/manga-detail/manga-deta
 import { MangaTableComponent } from './components/manga/manga-table/manga-table.component';
 import { UserTableComponent } from './components/user/user-table/user-table.component';
 import { UserDetailComponent } from './components/user/user-detail/user-detail.component';
+import { MessagesComponent } from './components/messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,13 @@ import { UserDetailComponent } from './components/user/user-detail/user-detail.c
     MangaDetailComponent,
     MangaTableComponent,
     UserTableComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

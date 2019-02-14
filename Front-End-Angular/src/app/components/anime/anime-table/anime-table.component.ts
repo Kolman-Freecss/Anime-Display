@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MockAnime } from '../../../mocks/mock-anime';
 import { Anime } from '../anime';
+import { AnimeService } from '../../../services/anime.service';
+
 
 @Component({
   selector: 'app-anime-table',
@@ -10,15 +11,27 @@ import { Anime } from '../anime';
 export class AnimeTableComponent implements OnInit {
 
   listAnime : Anime[];
+  animeSelected : Anime;
 
   constructor(
-    private mockAnime : MockAnime
+    private animeService : AnimeService
   ) { }
 
   ngOnInit() {
 
-    this.listAnime = this.mockAnime.getMocksAnime();
+    this.getAnimes();
 
+  }
+  
+  /*
+  onSelect(anime: Anime): void{
+    this.animeSelected = anime;
+  } 
+  */
+
+  getAnimes() : void {
+    this.animeService.getAnimes()
+    .subscribe(animes => this.listAnime = animes);
   }
 
 }

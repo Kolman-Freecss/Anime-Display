@@ -1,3 +1,15 @@
 <p>
   anime-table works!
 </p>
+<ul class="animes">
+  <li *ngFor="let anime of listAnime">
+    <a routerLink="/anime-detail/{{anime.id}}">
+      <span class="badge">{{anime.id}}</span> {{anime.name}}
+    </a>
+  </li>
+</ul>
+
+<!-- <app-anime-detail [anime]="animeSelected"></app-anime-detail> 
+[class.selected]="anime === animeSelected"
+    (click)="onSelect(anime)"
+-->

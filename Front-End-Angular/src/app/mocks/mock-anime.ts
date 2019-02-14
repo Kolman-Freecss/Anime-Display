@@ -1,5 +1,9 @@
 import { Anime } from '../components/anime/anime';
+import { Injectable } from '@angular/core';
 
+@Injectable({
+    providedIn: 'root'
+  })
 export class MockAnime{
 
     listAnime: Anime[] = [
