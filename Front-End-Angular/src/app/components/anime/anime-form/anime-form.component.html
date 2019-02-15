@@ -1,5 +1,11 @@
 <p>
-  anime-form works!
+  Add an Anime
 </p>
+<label>
+  Gender:
+  <input type="text" [formControl]="gender">
+  Name:
+  <input type="text" [formControl]="name">
+</label>
 
 <button (click)="goBack()">go back</button>

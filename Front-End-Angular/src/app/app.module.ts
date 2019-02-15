@@ -17,6 +17,7 @@ import { MockAnime } from './mocks/mock-anime';
 import { AnimeFormComponent } from './components/anime/anime-form/anime-form.component';
 import { FooterComponent } from './components/design/footer/footer.component';
 import { HeaderComponent } from './components/design/header/header.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { HeaderComponent } from './components/design/header/header.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     MockAnime,
