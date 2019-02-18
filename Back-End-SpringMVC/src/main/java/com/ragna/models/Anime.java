@@ -1,10 +1,13 @@
 package com.ragna.models;
 
+import java.util.List;
+
 public class Anime {
 
 	public enum Gender{
 		HORROR,
-		HISTORY
+		HISTORY,
+		ACTION
 	}
 	
 	private int id;
@@ -14,7 +17,6 @@ public class Anime {
 	private boolean isFinished;
 	
 	public Anime(int id, String name, Gender gender, String website, boolean isFinished) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.gender = gender;
@@ -22,6 +24,13 @@ public class Anime {
 		this.isFinished = isFinished;
 	}
 	
+	public Anime(int id) {
+		this.id = id;
+	}
+
+	public Anime() {
+	}
+
 	public int getId() {
 		return id;
 	}

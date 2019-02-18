@@ -1,5 +1,6 @@
 package com.ragna.services;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,23 +15,23 @@ public class AnimeService {
 	@Autowired
 	private AnimeDAO animeDao;
 	
-	public void createAnime(Anime anime) {
+	public void createAnime(Anime anime) throws IOException {
 		this.animeDao.createAnime(anime);
 	}
 
-	public Anime getAnime(int id) {
+	public Anime getAnime(int id) throws IOException {
 		return this.animeDao.getAnime(id);
 	}
 
-	public void updateAnime(Anime anime) {
+	public void updateAnime(Anime anime) throws IOException {
 		this.animeDao.updateAnime(anime);
 	}
 
-	public void deleteAnime(int id) {
+	public void deleteAnime(int id) throws IOException {
 		this.animeDao.deleteAnime(id);
 	}
 
-	public List<Anime> getAnimes() {
+	public List<Anime> getAnimes() throws IOException {
 		return this.animeDao.getAnimes();
 	}
 	
