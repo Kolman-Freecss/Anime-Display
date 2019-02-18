@@ -9,6 +9,10 @@ export class FooterComponent implements OnInit {
 
   @Input() imageBackground : String;
 
+  currentStyles = {
+    'background-image': 'url(' + this.imageBackground + ')',
+  };
+
   constructor() { }
 
   ngOnInit() {

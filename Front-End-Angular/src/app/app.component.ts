@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   imageBackgroundParam="assets/footer_image.png";
+
+  footerStyles = {
+    'background-image': 'url(' + this.imageBackgroundParam + ')',
+  };
+
 }

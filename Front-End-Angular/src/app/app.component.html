@@ -1,8 +1,31 @@
-<app-header></app-header>
-<nav>
-  <a routerLink="/anime-table">Anime</a>
-</nav>
-<router-outlet></router-outlet>
-<app-messages></app-messages>
-<app-footer [imageBackground]="imageBackgroundParam"></app-footer>
+<div class="main-container" [ngStyle]="footerStyles">
+
+  <div class="header text-center">
+    <app-header></app-header>
+  </div>
+
+  <div class="body-container">
+
+    <div class="left-body">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a routerLink="/anime-table">Anime</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/manga-table">Manga</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class ="right-body">
+      <router-outlet></router-outlet>
+      <app-messages></app-messages>
+    </div>
+
+  </div>
+    
+  <div class="footer"><!--"{'background-image': 'url(' + imageBackgroundParam + ')'}"-->
+    <app-footer [imageBackground]="imageBackgroundParam"></app-footer>
+  </div>
+</div>
 

@@ -25,4 +25,8 @@ export class AnimeService {
     return of(this.mockAnimes.getMocksAnime().find(anime => anime.id === id));
   }
 
+  addAnime(anime: Anime): void{
+    this.mockAnimes.addAnime(anime);
+  }
+
 }

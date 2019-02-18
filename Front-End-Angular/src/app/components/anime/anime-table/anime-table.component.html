@@ -2,17 +2,25 @@
   anime-table works!
 </p>
 <div *ngIf="listAnime.length < 10">
-  <ul class="animes">
-    <li *ngFor="let anime of listAnime">
-      <a routerLink="/anime-detail/{{anime.id}}">
-        <span class="badge">{{anime.id}}</span> {{anime.name}} <!--Interpolation = binding to view -->
-      </a>
-    </li>
-  </ul>
+  <table class="table table-dark table-hover table-striped" >
+    <thead class="thead-light">
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Gender</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let anime of listAnime">
+        <a routerLink="/anime-detail/{{anime.id}}">
+          <td>
+            {{anime.id}}
+          </td>
+        </a>
+        <td>{{anime.name}}</td>
+        <td>{{anime.gender}}</td>
+      </tr>
+    </tbody>
+  </table>
   <button (click)="clickAnimeForm()">Add Anime</button>
 </div>
-
-<!-- <app-anime-detail [anime]="animeSelected"></app-anime-detail> 
-[class.selected]="anime === animeSelected"
-    (click)="onSelect(anime)"
--->

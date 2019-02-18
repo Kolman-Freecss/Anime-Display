@@ -1,11 +1,27 @@
-<p>
+<h5>
   Add an Anime
-</p>
-<label>
-  Gender:
-  <input type="text" [formControl]="gender">
-  Name:
-  <input type="text" [formControl]="name">
-</label>
+</h5>
+<br>
+<div class="row">
+  <div class="col-md-6">
+    <form [formGroup]="addAnimeForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label class="col-sm-4">Gender </label>
+        <select class="col-sm-8" formControlName="gender" required>
+          <option *ngFor="let gender of genderOptions" [value]="gender">{{gender}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+          <label class="col-sm-4">Name </label>
+          <input class="col-sm-8" type="text" formControlName="name" required>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit" [disabled]="!addAnimeForm.valid">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
 
-<button (click)="goBack()">go back</button>
+<br><br>
+<button (click)="updateName()">Update Name</button>
+<button (click)="goBack()">Back</button>

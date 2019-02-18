@@ -1,0 +1,33 @@
+html, body, .main-container{
+    width: 100%;
+    height: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+    position: absolute;
+}
+
+.header{
+    width: 100%;
+    height: 20%;
+}
+
+.body-container{
+    width: 100%;
+    height: 60%;
+}
+
+.footer{
+    width: 100%;
+    height: 20%;
+    
+}
+
+.left-body{
+    float: left;
+    width: 10%;
+}
+
+.right-body{
+    float: left;
+    width: 90%;
+}
