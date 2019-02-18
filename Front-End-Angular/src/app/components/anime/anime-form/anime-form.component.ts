@@ -54,7 +54,7 @@ export class AnimeFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.animeService.addAnime(new Anime(this.addAnimeForm.get('name').value, this.addAnimeForm.get('gender').value));
+    this.animeService.addAnime(new Anime(this.addAnimeForm.get('name').value, this.addAnimeForm.get('gender').value, "website"));
     this.location.back();
     console.warn(this.addAnimeForm.value);
     console.log(this.addAnimeForm.status);

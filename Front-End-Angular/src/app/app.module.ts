@@ -18,6 +18,7 @@ import { AnimeFormComponent } from './components/anime/anime-form/anime-form.com
 import { FooterComponent } from './components/design/footer/footer.component';
 import { HeaderComponent } from './components/design/header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule }    from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     MockAnime,

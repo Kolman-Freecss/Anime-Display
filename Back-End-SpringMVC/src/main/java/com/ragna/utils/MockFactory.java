@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import com.ragna.models.Anime;
 import com.ragna.models.Anime.Gender;
 
-@Component
 public class MockFactory {
 
 	private static int currentIdAnime = 0;

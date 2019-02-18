@@ -10,17 +10,30 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context.xsd">
- 
- 	<!-- Enables the Spring MVC @Controller programming model 
- 	@EnableWebMvc is equivalent to <mvc:annotation-driven /> in XML. It enables support for @Controller
- 	-->
+
+	<!-- Enables the Spring MVC @Controller programming model @EnableWebMvc 
+		is equivalent to <mvc:annotation-driven /> in XML. It enables support for 
+		@Controller -->
 	<mvc:annotation-driven />
-	
-	<context:component-scan
-		base-package="com.ragna" />
-		
-	<context:property-placeholder location="classpath:application.properties"/>
-		
+
+	<!-- <mvc:cors>
+		<mvc:mapping path="/**" />
+	</mvc:cors> -->
+
+<!--	<mvc:cors>
+		<mvc:mapping path="/getAnimes"
+			allowed-origins="http://localhost:4200"
+			allowed-methods="POST, GET, PUT, DELETE"
+			allowed-headers="Content-Type,X-Requested-With,accept,Origin,Access-Control-Request-Method,Access-Control-Request-Headers,Authorization"
+			exposed-headers="Origin,Access-Control-Request-Method,Access-Control-Allow-Origin,Access-Control-Allow-Credentials"
+			/>
+	</mvc:cors> -->
+
+	<context:component-scan base-package="com.ragna" />
+
+	<context:property-placeholder
+		location="classpath:application.properties" />
+
 	<mvc:default-servlet-handler />
- 
+
 </beans>

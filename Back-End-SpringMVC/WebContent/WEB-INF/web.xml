@@ -22,7 +22,7 @@
 		<init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>
-                /WEB-INF/spring/mvc/spring-mvc-servlet.xml
+                /WEB-INF/spring-mvc-servlet.xml
             </param-value>
         </init-param>
 		<load-on-startup>1</load-on-startup>
@@ -32,6 +32,17 @@
 		<servlet-name>spring-mvc</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
+	
+	
+	<filter>
+		<filter-name>CORS</filter-name>
+		<filter-class>com.ragna.config.CORSFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	        <filter-name>CORS</filter-name>
+	        <url-pattern>/*</url-pattern>
+	</filter-mapping>
 
 
 </web-app>

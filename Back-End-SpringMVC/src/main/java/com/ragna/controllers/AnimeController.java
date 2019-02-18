@@ -21,7 +21,7 @@ import com.ragna.services.AnimeService;
 
 @RestController
 @RequestMapping("/anime-display/api/anime")
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class AnimeController {
 
 	@Autowired
@@ -39,7 +39,7 @@ public class AnimeController {
 	}
 	
 	@GetMapping(value = "/getAnimes")
-	private ResponseEntity<List<Anime>> getStudents() {
+	private ResponseEntity<List<Anime>> getAnime() {
 
 		List<Anime> response = null;
 		try {
@@ -54,7 +54,7 @@ public class AnimeController {
 	}
 
 	@GetMapping(value = "/getAnimeById/{idAnime}")
-	private ResponseEntity<Anime> getStudentById(@PathVariable("idAnime") int idAnime) {
+	private ResponseEntity<Anime> getAnimeById(@PathVariable("idAnime") int idAnime) {
 
 		Anime response = null;
 		try {

@@ -13,10 +13,10 @@ import com.ragna.models.Anime;
 @Repository
 public class AnimeDAOImpl implements AnimeDAO {
 
-	@Value("${path.file.anime}")
+	@Value("${path-file-anime}")
 	private String pathFile; 
 	
-	private File file = new File(pathFile);
+	private File file = new File("src/main/resources/anime-list.json");
 	private ObjectMapper mapper = new ObjectMapper();
 	
 	@Override

@@ -3,6 +3,7 @@ import { Anime } from '../components/anime/anime';
 import { MockAnime } from '../mocks/mock-anime';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
+import { ClientWsService } from '../webservice/clientWS/client-ws.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,12 @@ export class AnimeService {
   constructor(
     private mockAnimes : MockAnime,
     private messageService : MessageService,
+    private clientWsService : ClientWsService,
   ) { }
 
   getAnimes() : Observable<Anime[]>{
     this.messageService.add("AnimeService: fetched animes");
-    return of(this.mockAnimes.getMocksAnime());
+    return this.clientWsService.getAnimes();//of(this.mockAnimes.getMocksAnime());
   }
 
   getAnime(id: number): Observable<Anime> {
