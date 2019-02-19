@@ -5,20 +5,20 @@ export class Anime{
     name: String;
     gender: Gender;
     website: String;
-    isFinished?: boolean;
+    isFinished: boolean;
 
     constructor(
         name: String,
         gender: Gender,
         website: String,
+        isFinished: boolean,
         id?: number,
-        isFinished?: boolean,
     ){
         id != null ? this.id = id : "";
         this.name = name;
         this.gender = gender;
         this.website = website;
-        isFinished != null ? this.isFinished = isFinished : "";
+        this.isFinished = isFinished;
     }
 
     setId?(id: number): void{

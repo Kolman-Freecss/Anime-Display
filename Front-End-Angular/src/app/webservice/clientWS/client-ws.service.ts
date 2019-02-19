@@ -16,6 +16,10 @@ enum TypeCall{ GET, POST, DELETE, UPDATE}
 })
 export class ClientWsService {
 
+  const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
   constructor(
     private http : HttpClient,
     private messageService : MessageService,
@@ -28,6 +32,38 @@ export class ClientWsService {
       .pipe(
         catchError(this.handleError<Anime[]>(TypeCall.GET))
       );
+  }
+
+  getAnimeById(id:number): Observable<Anime>{
+    const url = WS_URL + "anime/getAnimeById?idAnime=" + id;
+    return this.http.get<Anime>(url).
+      pipe(
+      catchError(this.handleError<Anime>(TypeCall.GET))
+    );
+  }
+
+  createAnime(anime:Anime): Observable<Anime>{
+    const url = WS_URL + "anime/createAnime";
+    return this.http.post<Anime>(url, anime, this.httpOptions).
+      pipe(
+      catchError(this.handleError<Anime>(TypeCall.POST))
+    );
+  }
+
+  updateAnime(anime: Anime): Observable<Anime>{
+    const url = WS_URL + "anime/updateAnime";
+    return this.http.put<Anime>(url, anime).
+      pipe(
+      catchError(this.handleError<Anime>(TypeCall.UPDATE))
+    );
+  }
+
+  deleteAnime(id:number): Observable<{}>{
+    const url = WS_URL + "anime/deleteAnime/" + id;
+    return this.http.delete(url).
+      pipe(
+      catchError(this.handleError<Anime>(TypeCall.DELETE))
+    );
   }
 
   private handleError<T>(operation: TypeCall, result?: T) {

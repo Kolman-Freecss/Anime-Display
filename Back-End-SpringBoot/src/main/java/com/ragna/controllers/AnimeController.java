@@ -65,8 +65,8 @@ public class AnimeController {
 			new ResponseEntity<Anime>(response, HttpStatus.OK);
 	}
 
-	@PutMapping(value = "/updateAnime/{dni}")
-	private ResponseEntity<?> updateAnime(@PathVariable("dni") String dni, @RequestBody Anime anime) {
+	@PutMapping(value = "/updateAnime")
+	private ResponseEntity<?> updateAnime(@RequestBody Anime anime) {
 
 		try {
 			this.animeService.updateAnime(anime);

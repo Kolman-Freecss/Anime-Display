@@ -17,6 +17,7 @@ export class AnimeFormComponent implements OnInit {
     name: new FormControl(''),
   });*/
   genderOptions: String[];
+  animeSubmitted : Anime;
 
   constructor(
     private location: Location,
@@ -27,6 +28,8 @@ export class AnimeFormComponent implements OnInit {
   addAnimeForm = this.formBuilder.group({
     gender: ['', Validators.required],
     name: ['', Validators.required],
+    website: ['', Validators.required],
+    isFinished: ['', Validators.required]
   });
 
   ngOnInit() {
@@ -54,10 +57,27 @@ export class AnimeFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.animeService.addAnime(new Anime(this.addAnimeForm.get('name').value, this.addAnimeForm.get('gender').value, "website"));
+    this.animeSubmitted = this.saveAnime();
+
+    this.animeService.addAnime(new Anime(this.animeSubmitted.name, this.animeSubmitted.gender, this.animeSubmitted.website, this.animeSubmitted.isFinished));
+    //this.addAnimeForm.get("gender"), this.addAnimeForm.get("name"), this.addAnimeForm.get("website"), this.addAnimeForm.get("isFinished")
+    //this.addAnimeForm.get('name').value, this.addAnimeForm.get('gender').value, "website")
     this.location.back();
     console.warn(this.addAnimeForm.value);
     console.log(this.addAnimeForm.status);
+  }
+
+  saveAnime() : Anime{
+    const formModel = this.addAnimeForm.value;
+
+    const saveAnime : Anime = {
+      name : formModel.name as String,
+      gender : formModel.gender as Gender,
+      website : formModel.website as String,
+      isFinished : formModel.isFinished as boolean,
+    }
+
+    return saveAnime;
   }
 
 }

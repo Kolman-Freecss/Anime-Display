@@ -6,8 +6,8 @@ import { Gender } from './mock-gender';
 export class MockAnime{
 
     listAnime: Anime[] = [
-        new Anime('Boku no Hero', Gender.HORROR, "https://animeflv.net/anime/5148/boku-no-hero-academia-2016", 1), //{name: , gender: 'Horror'}
-        new Anime('Bleach', Gender.ACTION, "https://animeflv.net/anime/3602/bleach-tv", 2, true),//{name: 'Boku no Hero', gender: 'History'}
+        new Anime('Boku no Hero', Gender.HORROR, "https://animeflv.net/anime/5148/boku-no-hero-academia-2016", false, 1), //{name: , gender: 'Horror'}
+        new Anime('Bleach', Gender.ACTION, "https://animeflv.net/anime/3602/bleach-tv", true, 2),//{name: 'Boku no Hero', gender: 'History'}
     ];
 
     getMocksAnime(): Anime[]{

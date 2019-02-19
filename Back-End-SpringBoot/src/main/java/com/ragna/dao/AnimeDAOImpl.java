@@ -17,12 +17,19 @@ public class AnimeDAOImpl implements AnimeDAO {
 	/*@Value("${path-file-anime}")
 	private String pathFile; */
 	
-	private File file = new File("src/main/resources/anime-list.json");
-	private ObjectMapper mapper = new ObjectMapper();
+	private static File file = new File("src/main/resources/anime-list.json");
+	private static ObjectMapper mapper = new ObjectMapper();
+	
+	static {
+		if(!file.exists()) {
+			file.mkdir();
+		}
+	}
 	
 	@Override
 	public void createAnime(Anime anime) throws IOException {
 		List<Anime> animeList = this.getAnimes();
+		anime.setId(animeList.size() + 1);
 		animeList.add(anime);
 		this.saveAnimes(animeList);
 	}
@@ -62,6 +69,10 @@ public class AnimeDAOImpl implements AnimeDAO {
 		for(Anime a : animeList) {
 			if(a.getId() == id) {
 				animeList.remove(a);
+				//Java 8 Lambda to sort the Json array when we delete a Anime from the List.
+				animeList.sort((param1, param2) -> {
+					return param1.getId() > param2.getId() ? -1 : 1;
+				});
 				break;
 			}
 		}
@@ -76,7 +87,7 @@ public class AnimeDAOImpl implements AnimeDAO {
 	@Override
 	public List<Anime> getAnimes() throws IOException {
 		
-		List<Anime> animeList = this.mapper.readValue(this.file, new TypeReference<List<Anime>>() {});
+		List<Anime> animeList = this.mapper.readValue(file, new TypeReference<List<Anime>>() {});
 		return animeList;
 	}
 

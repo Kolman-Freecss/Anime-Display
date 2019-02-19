@@ -28,7 +28,8 @@ export class AnimeService {
   }
 
   addAnime(anime: Anime): void{
-    this.mockAnimes.addAnime(anime);
+    this.clientWsService.createAnime(anime);
+    //this.mockAnimes.addAnime(anime);
   }
 
 }
