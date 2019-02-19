@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
 import { Anime } from '../../components/anime/anime';
 
 
-const WS_URL = 'http://localhost:8080/anime-display/api/' // URL to webapi
+const WS_URL = 'http://localhost:8180/anime-display/api/' // URL to webapi
 
 enum TypeCall{ GET, POST, DELETE, UPDATE}
 

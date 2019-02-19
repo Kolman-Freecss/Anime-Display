@@ -21,6 +21,7 @@ import com.ragna.services.AnimeService;
 
 @RestController
 @RequestMapping("/anime-display/api/anime")
+//@CrossOrigin(origins = "http://localhost:4200", allowCredentials="true")
 //@CrossOrigin(origins = "http://localhost:4200")
 public class AnimeController {
 
