@@ -1,2 +1,2 @@
 # Anime-Display
-Angular as Front-End and Spring MVC as Back-End
+Angular as Front-End and Spring Boot as Back-End
