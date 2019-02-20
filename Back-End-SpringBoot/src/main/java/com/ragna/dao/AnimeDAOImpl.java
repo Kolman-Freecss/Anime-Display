@@ -1,8 +1,16 @@
 package com.ragna.dao;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -22,7 +30,11 @@ public class AnimeDAOImpl implements AnimeDAO {
 	
 	static {
 		if(!file.exists()) {
-			file.mkdir();
+			Path files = Paths.get("src/main/resources/anime-list.json");
+			try {
+				Files.write(files, "[]".getBytes());
+				mapper.writeValue(file, new ArrayList<>());
+			} catch (IOException e) {}
 		}
 	}
 	
