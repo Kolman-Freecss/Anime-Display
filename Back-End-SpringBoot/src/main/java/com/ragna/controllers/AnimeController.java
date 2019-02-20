@@ -27,7 +27,7 @@ public class AnimeController {
 	@Autowired
 	private AnimeService animeService;
 	
-	@PostMapping(value="/createAnime", produces="text/plain")
+	@PostMapping(value="/createAnime")
 	private ResponseEntity<?> createAnime(@RequestBody Anime anime) {
 		try {
 			this.animeService.createAnime(anime);
