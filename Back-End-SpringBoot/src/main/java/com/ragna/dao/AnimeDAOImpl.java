@@ -29,7 +29,9 @@ public class AnimeDAOImpl implements AnimeDAO {
 	@Override
 	public void createAnime(Anime anime) throws IOException {
 		List<Anime> animeList = this.getAnimes();
-		anime.setId(animeList.size() + 1);
+		
+		anime.setId(animeList.size());
+		
 		animeList.add(anime);
 		this.saveAnimes(animeList);
 	}
@@ -66,16 +68,12 @@ public class AnimeDAOImpl implements AnimeDAO {
 	@Override
 	public void deleteAnime(int id) throws IOException{
 		List<Anime> animeList = this.getAnimes();
-		for(Anime a : animeList) {
-			if(a.getId() == id) {
-				animeList.remove(a);
-				//Java 8 Lambda to sort the Json array when we delete a Anime from the List.
-				animeList.sort((param1, param2) -> {
-					return param1.getId() > param2.getId() ? -1 : 1;
-				});
-				break;
-			}
+		for (int i = id; i < animeList.size(); i++) {
+			Anime anime = animeList.get(i);
+			anime.setId(anime.getId() - 1);
 		}
+		animeList.remove(id);
+		saveAnimes(animeList);
 	}
 	
 	@Override

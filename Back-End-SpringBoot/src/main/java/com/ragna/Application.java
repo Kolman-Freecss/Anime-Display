@@ -22,7 +22,11 @@ public class Application {
 	 
 	    @Override
 	    public void addCorsMappings(CorsRegistry registry) {
-	        registry.addMapping("/**");
+	        registry.addMapping("/**")
+			        .allowedOrigins("http://localhost:4200")
+					.allowedMethods("PUT", "DELETE", "GET", "OPTIONS", "POST")
+						.allowedHeaders("X-Auth-Token", "Content-Type")
+					.allowCredentials(false).maxAge(4800);
 	    }
 	}
 

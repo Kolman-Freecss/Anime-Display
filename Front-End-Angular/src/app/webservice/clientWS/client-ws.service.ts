@@ -9,16 +9,16 @@ import { Anime } from '../../components/anime/anime';
 
 const WS_URL = 'http://localhost:8080/anime-display/api/' // URL to webapi
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 enum TypeCall{ GET, POST, DELETE, UPDATE}
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientWsService {
-
-  const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
 
   constructor(
     private http : HttpClient,
@@ -44,7 +44,7 @@ export class ClientWsService {
 
   createAnime(anime:Anime): Observable<Anime>{
     const url = WS_URL + "anime/createAnime";
-    return this.http.post<Anime>(url, anime, this.httpOptions).
+    return this.http.post<Anime>(url, anime, httpOptions).
       pipe(
       catchError(this.handleError<Anime>(TypeCall.POST))
     );

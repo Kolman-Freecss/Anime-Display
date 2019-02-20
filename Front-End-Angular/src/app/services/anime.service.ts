@@ -27,9 +27,13 @@ export class AnimeService {
     return of(this.mockAnimes.getMocksAnime().find(anime => anime.id === id));
   }
 
-  addAnime(anime: Anime): void{
-    this.clientWsService.createAnime(anime);
+  addAnime(anime: Anime): Observable<Anime>{
+    return this.clientWsService.createAnime(anime);
     //this.mockAnimes.addAnime(anime);
+  }
+
+  deleteAnime(id : number): Observable<{}>{
+    return this.clientWsService.deleteAnime(id);
   }
 
 }

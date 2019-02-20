@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let anime of listAnime">
+      <tr *ngFor="let anime of listAnime; let i = index">
         <a routerLink="/anime-detail/{{anime.id}}">
           <td>
             {{anime.id}}
@@ -19,6 +19,9 @@
         </a>
         <td>{{anime.name}}</td>
         <td>{{anime.gender}}</td>
+        <td>
+          <button *ngIf="listAnime.length > 1" (click)="deleteAnime(i)" class="btn btn-danger">Delete</button>
+        </td>
       </tr>
     </tbody>
   </table>

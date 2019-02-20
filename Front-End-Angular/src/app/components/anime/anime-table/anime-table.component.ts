@@ -44,4 +44,10 @@ export class AnimeTableComponent implements OnInit {
     this.router.navigate([ANIME_FORM]);
   }
 
+  deleteAnime(id : number): void {
+    this.animeService.deleteAnime(id).subscribe(() => {
+      this.listAnime.splice(id, 1);
+    });
+  }
+
 }

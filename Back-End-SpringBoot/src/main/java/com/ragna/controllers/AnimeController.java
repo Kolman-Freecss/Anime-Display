@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ragna.pojos.Anime;
 import com.ragna.service.AnimeService;
 
+import ch.qos.logback.classic.Logger;
+
 @RestController
 @RequestMapping("/anime-display/api/anime")
 public class AnimeController {
@@ -25,15 +27,15 @@ public class AnimeController {
 	@Autowired
 	private AnimeService animeService;
 	
-	@PostMapping(value="/createAnime")
+	@PostMapping(value="/createAnime", produces="text/plain")
 	private ResponseEntity<?> createAnime(@RequestBody Anime anime) {
 		try {
 			this.animeService.createAnime(anime);
 		} catch (IOException e) {
 			e.printStackTrace();
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Not working");
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		return ResponseEntity.ok().body("Anime has been created succesfully");
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/getAnimes")
@@ -48,7 +50,7 @@ public class AnimeController {
 		}
 
 		return response == null ? new ResponseEntity<>(HttpStatus.NO_CONTENT) :
-			new ResponseEntity<List<Anime>>(response, HttpStatus.OK);
+			new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/getAnimeById/{idAnime}")
@@ -62,7 +64,7 @@ public class AnimeController {
 		}
 		
 		return response == null ? new ResponseEntity<>(HttpStatus.NO_CONTENT) :
-			new ResponseEntity<Anime>(response, HttpStatus.OK);
+			new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	@PutMapping(value = "/updateAnime")
@@ -74,7 +76,7 @@ public class AnimeController {
 			e.printStackTrace();
 		}
 
-		return ResponseEntity.ok().body("Anime has been updated succesfully");
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/deleteAnime/{id}")
@@ -86,8 +88,8 @@ public class AnimeController {
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
-		
-		return ResponseEntity.ok().body("Anime has been deleted successfully.");
+
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 }
