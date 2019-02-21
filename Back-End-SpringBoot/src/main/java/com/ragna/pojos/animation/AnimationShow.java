@@ -1,17 +1,8 @@
-package com.ragna.pojos;
+package com.ragna.pojos.animation;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ragna.pojos.Gender;
 
-public class Anime {
-
-	public enum Gender{
-		@JsonProperty("Horror")
-		HORROR,
-		@JsonProperty("History")
-		HISTORY,
-		@JsonProperty("Action")
-		ACTION
-	}
+public abstract class AnimationShow {
 	
 	private int id;
 	private String name;
@@ -19,7 +10,7 @@ public class Anime {
 	private String website;
 	private boolean isFinished;
 	
-	public Anime(int id, String name, Gender gender, String website, boolean isFinished) {
+	public AnimationShow(int id, String name, Gender gender, String website, boolean isFinished) {
 		this.id = id;
 		this.name = name;
 		this.gender = gender;
@@ -27,49 +18,48 @@ public class Anime {
 		this.isFinished = isFinished;
 	}
 	
-	public Anime(int id) {
+	public AnimationShow(int id) {
 		this.id = id;
 	}
-
-	public Anime() {
-	}
+	
+	public AnimationShow() {}
 
 	public int getId() {
 		return id;
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public Gender getGender() {
 		return gender;
 	}
-	
+
 	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
-	
+
 	public String getWebsite() {
 		return website;
 	}
-	
+
 	public void setWebsite(String website) {
 		this.website = website;
 	}
-	
+
 	public boolean isFinished() {
 		return isFinished;
 	}
-	
+
 	public void setFinished(boolean isFinished) {
 		this.isFinished = isFinished;
 	}

@@ -1,9 +1,9 @@
-package com.ragna.dao;
+package com.ragna.dao.animation.anime;
 
 import java.io.IOException;
 import java.util.List;
 
-import com.ragna.pojos.Anime;
+import com.ragna.pojos.animation.Anime;
 
 public interface AnimeDAO {
 

@@ -1,4 +1,4 @@
-package com.ragna.dao;
+package com.ragna.dao.animation.anime;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ragna.pojos.Anime;
+import com.ragna.pojos.animation.Anime;
 
 @Repository
 public class AnimeDAOImpl implements AnimeDAO {

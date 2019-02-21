@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ragna.dao.AnimeDAO;
-import com.ragna.pojos.Anime;
+import com.ragna.dao.animation.anime.AnimeDAO;
+import com.ragna.pojos.animation.Anime;
 
 @Service
 public class AnimeService {

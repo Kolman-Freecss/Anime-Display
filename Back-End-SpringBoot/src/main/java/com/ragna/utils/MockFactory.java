@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.ragna.pojos.Anime;
-import com.ragna.pojos.Anime.Gender;
+import com.ragna.pojos.Gender;
+import com.ragna.pojos.animation.Anime;
 
 public class MockFactory {
 
