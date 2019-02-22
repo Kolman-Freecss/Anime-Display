@@ -36,4 +36,12 @@ export class AnimeService {
     return this.clientWsService.deleteAnime(id);
   }
 
+  generatePDF(animes: Anime[]): void{
+    this.clientWsService.generatePDF(animes).subscribe(data => {
+        let file = new Blob([data], {type: 'application/pdf'});
+        let fileURL = URL.createObjectURL(file);
+        window.open(fileURL);
+    });
+  }
+
 }

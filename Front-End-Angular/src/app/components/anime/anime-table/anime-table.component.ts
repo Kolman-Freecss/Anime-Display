@@ -50,4 +50,8 @@ export class AnimeTableComponent implements OnInit {
     });
   }
 
+  generatePDF(): void{
+    this.animeService.generatePDF(this.listAnime);
+  }
+
 }

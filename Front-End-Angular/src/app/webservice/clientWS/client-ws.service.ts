@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { LoggerService } from '../../services/logger.service';
 import { MessageService } from '../../services/message.service';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -64,6 +64,15 @@ export class ClientWsService {
       pipe(
       catchError(this.handleError<Anime>(TypeCall.DELETE))
     );
+  }
+
+  generatePDF(listAnime: Anime[]) : Observable<any>{
+    let data = {data : JSON.stringify(listAnime)};
+    const url = WS_URL + "anime/exportPdf/" + data;
+    return this.http.get(url).
+      pipe(
+        catchError(this.handleError<Anime[]>(TypeCall.GET))
+      );
   }
 
   private handleError<T>(operation: TypeCall, result?: T) {

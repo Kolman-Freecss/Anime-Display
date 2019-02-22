@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ragna.pojos.animation.Anime;
 import com.ragna.service.AnimeService;
 import com.ragna.utils.pdf.PDFGenerator;
@@ -29,6 +31,8 @@ public class AnimeController {
 
 	@Autowired
 	private AnimeService animeService;
+	
+	private ObjectMapper mp = new ObjectMapper();
 	
 	@PostMapping(value="/createAnime")
 	private ResponseEntity<?> createAnime(@RequestBody Anime anime) {
@@ -95,20 +99,24 @@ public class AnimeController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	@GetMapping(value="/exportPdf", produces= MediaType.APPLICATION_PDF_VALUE)
-	public ResponseEntity<InputStreamResource> exportPdfAnime(@RequestBody List<Anime> animes) throws IOException {
-        //List<Anime> anime = (List<Customer>) customerRepository.findAll();
- 
-        ByteArrayInputStream bis = PDFGenerator.buildPDF(animes);
+	@GetMapping(value="/exportPdf/{anime}", produces= MediaType.APPLICATION_PDF_VALUE)
+	public ResponseEntity<InputStreamResource> exportPdfAnime(@PathVariable String animes) throws IOException {
+        List<Anime> animeList = this.mp.readValue(animes, new TypeReference<List<Anime>>(){});
+		
+        ByteArrayInputStream bis = PDFGenerator.buildPDF(animeList);
  
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Disposition", "inline; filename=animes.pdf");
+        headers.setContentType(MediaType.APPLICATION_PDF);
  
-        return ResponseEntity
+        return new ResponseEntity<>(
+                new InputStreamResource(bis),
+                headers, HttpStatus.OK);
+        		/*ResponseEntity
                 .ok()
                 .headers(headers)
                 .contentType(MediaType.APPLICATION_PDF)
-                .body(new InputStreamResource(bis));
+                .body(new InputStreamResource(bis));*/
     }
 	
 }
