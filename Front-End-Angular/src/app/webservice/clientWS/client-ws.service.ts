@@ -67,9 +67,9 @@ export class ClientWsService {
   }
 
   generatePDF(listAnime: Anime[]) : Observable<any>{
-    let data = {data : JSON.stringify(listAnime)};
-    const url = WS_URL + "anime/exportPdf/" + data;
-    return this.http.get(url).
+    let animes = JSON.stringify(listAnime);
+    const url = WS_URL + "anime/exportPdf";
+    return this.http.post(url, animes, {responseType: 'blob'}).
       pipe(
         catchError(this.handleError<Anime[]>(TypeCall.GET))
       );

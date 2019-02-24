@@ -99,8 +99,8 @@ public class AnimeController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	@GetMapping(value="/exportPdf/{anime}", produces= MediaType.APPLICATION_PDF_VALUE)
-	public ResponseEntity<InputStreamResource> exportPdfAnime(@PathVariable String animes) throws IOException {
+	@PostMapping(value="/exportPdf", produces = MediaType.APPLICATION_PDF_VALUE)
+	public ResponseEntity<InputStreamResource> exportPdfAnime(@RequestBody String animes) throws IOException {
         List<Anime> animeList = this.mp.readValue(animes, new TypeReference<List<Anime>>(){});
 		
         ByteArrayInputStream bis = PDFGenerator.buildPDF(animeList);
@@ -111,12 +111,8 @@ public class AnimeController {
  
         return new ResponseEntity<>(
                 new InputStreamResource(bis),
-                headers, HttpStatus.OK);
-        		/*ResponseEntity
-                .ok()
-                .headers(headers)
-                .contentType(MediaType.APPLICATION_PDF)
-                .body(new InputStreamResource(bis));*/
+                headers, 
+                HttpStatus.OK);
     }
 	
 }
