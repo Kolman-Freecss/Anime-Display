@@ -29,5 +29,10 @@ html, body, .main-container{
 
 .right-body{
     float: left;
-    width: 90%;
+    width: 80%;
+    margin-left: 40px;
+}
+
+.right-body .second-route {
+    margin-top: 50px;
 }

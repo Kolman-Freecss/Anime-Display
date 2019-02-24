@@ -6,20 +6,16 @@
 
   <div class="body-container">
 
-    <div class="left-body">
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <a routerLink="/anime-table">Anime</a>
-        </li>
-        <li class="nav-item">
-          <a routerLink="/manga-table">Manga</a>
-        </li>
-      </ul>
-    </div>
+    <nav class="left-body nav flex-column">
+      <a class="nav-link active" routerLink="/anime-table">Anime</a>
+      <a class="nav-link" routerLink="/manga-table">Manga</a>
+    </nav>
 
     <div class ="right-body">
       <router-outlet></router-outlet>
-      <app-messages></app-messages>
+      <div class="second-route">
+        <app-messages></app-messages>
+      </div>
     </div>
 
   </div>
@@ -27,5 +23,6 @@
   <div class="footer"><!--"{'background-image': 'url(' + imageBackgroundParam + ')'}"-->
     <app-footer [imageBackground]="imageBackgroundParam"></app-footer>
   </div>
+
 </div>
 

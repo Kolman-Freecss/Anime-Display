@@ -1,6 +1,6 @@
-<p>
-  anime-table works!
-</p>
+<h5 class="font-weight-bold">
+  Anime Table!
+</h5>
 <div > <!--*ngIf="listAnime.length < 10"-->
   <table class="table table-dark table-hover table-striped" >
     <thead class="thead-light">
@@ -8,6 +8,7 @@
         <th>Id</th>
         <th>Name</th>
         <th>Gender</th>
+        <th *ngIf="listAnime.length > 1"></th>
       </tr>
     </thead>
     <tbody>
@@ -19,12 +20,12 @@
         </a>
         <td>{{anime.name}}</td>
         <td>{{anime.gender}}</td>
-        <td>
-          <button *ngIf="listAnime.length > 1" (click)="deleteAnime(i)" class="btn btn-danger">Delete</button>
+        <td *ngIf="listAnime.length > 1">
+          <button (click)="deleteAnime(i)" type="button" class="btn btn-outline-danger">Delete</button>
         </td>
       </tr>
     </tbody>
   </table>
-  <button (click)="clickAnimeForm()">Add Anime</button>
-  <button (click)="generatePDF()">Generate PDF</button>
+  <button type="button" class="btn btn-dark btn-lg" (click)="clickAnimeForm()">Add Anime</button>
+  <button type="button" class="btn btn-dark btn-lg" (click)="generatePDF()" id="generatePDF">Generate PDF</button>
 </div>
