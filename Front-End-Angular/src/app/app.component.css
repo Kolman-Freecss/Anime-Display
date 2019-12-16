@@ -1,38 +1,38 @@
 html, body, .main-container{
-    width: 100%;
-    height: 100%;
-    margin-left: 15px;
-    margin-right: 15px;
-    position: absolute;
+    width:              100%;
+    height:             100%;
+    margin-left:        15px;
+    margin-right:       15px;
+    position:           absolute;
 }
 
 .header{
-    width: 100%;
-    height: 20%;
+    width:              100%;
+    height:             20%;
 }
 
 .body-container{
-    width: 100%;
-    height: 60%;
+    width:              100%;
+    height:             60%;
 }
 
 .footer{
-    width: 100%;
-    height: 20%;
+    width:              100%;
+    height:             20%;
     
 }
 
 .left-body{
-    float: left;
-    width: 10%;
+    float:              left;
+    width:              10%;
 }
 
 .right-body{
-    float: left;
-    width: 80%;
-    margin-left: 40px;
+    float:              left;
+    width:              80%;
+    margin-left:        40px;
 }
 
 .right-body .second-route {
-    margin-top: 50px;
+    margin-top:         50px;
 }

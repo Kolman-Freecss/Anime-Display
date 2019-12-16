@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Anime } from '../components/anime/anime';
+import { Anime } from '../model/anime';
 import { MockAnime } from '../mocks/mock-anime';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
@@ -18,7 +18,7 @@ export class AnimeService {
 
   getAnimes() : Observable<Anime[]>{
     this.messageService.add("AnimeService: fetched animes");
-    return this.clientWsService.getAnimes();//of(this.mockAnimes.getMocksAnime());
+    return this.clientWsService.getAnimes();
   }
 
   getAnime(id: number): Observable<Anime> {
@@ -29,7 +29,6 @@ export class AnimeService {
 
   addAnime(anime: Anime): Observable<Anime>{
     return this.clientWsService.createAnime(anime);
-    //this.mockAnimes.addAnime(anime);
   }
 
   deleteAnime(id : number): Observable<{}>{

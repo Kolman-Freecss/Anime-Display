@@ -81,19 +81,19 @@ public class AnimeDAOImpl implements AnimeDAO {
 			anime.setId(anime.getId() - 1);
 		}
 		animeList.remove(id);
-		saveAnimes(animeList);
+		this.saveAnimes(animeList);
 	}
 	
 	@Override
 	public void saveAnimes(List<Anime> animeList) throws IOException {
 		new PrintWriter("src/main/resources/anime-list.json").close();
-		this.mapper.writeValue(file, animeList);
+		mapper.writeValue(file, animeList);
 	}
 
 	@Override
 	public List<Anime> getAnimes() throws IOException {
 		
-		List<Anime> animeList = this.mapper.readValue(file, new TypeReference<List<Anime>>() {});
+		List<Anime> animeList = mapper.readValue(file, new TypeReference<List<Anime>>() {});
 		return animeList;
 	}
 

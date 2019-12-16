@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { AnimeService }  from '../../../services/anime.service';
-import { Anime } from '../anime';
+import { Anime } from '../../../model/anime';
 
 @Component({
   selector: 'app-anime-detail',

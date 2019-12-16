@@ -23,96 +23,118 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ragna.pojos.animation.Anime;
 import com.ragna.service.AnimeService;
+import com.ragna.utils.pdf.PDF;
 import com.ragna.utils.pdf.PDFGenerator;
 
 @RestController
 @RequestMapping("/anime-display/api/anime")
-public class AnimeController {
+public class AnimeController
+{
 
 	@Autowired
 	private AnimeService animeService;
-	
+
 	private ObjectMapper mp = new ObjectMapper();
-	
-	@PostMapping(value="/createAnime")
-	private ResponseEntity<?> createAnime(@RequestBody Anime anime) {
-		try {
+
+	@PostMapping(value = "/createAnime")
+	private ResponseEntity<?> createAnime(@RequestBody Anime anime)
+	{
+		try
+		{
 			this.animeService.createAnime(anime);
-		} catch (IOException e) {
+		}
+		catch (IOException e)
+		{
 			e.printStackTrace();
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
+
 	@GetMapping(value = "/getAnimes")
-	private ResponseEntity<List<Anime>> getAnime() {
+	private ResponseEntity<List<Anime>> getAnime()
+	{
 
 		List<Anime> response = null;
-		try {
+		try
+		{
 			response = this.animeService.getAnimes();
-			
-		}catch(IOException e) {
+
+		}
+		catch (IOException e)
+		{
 			e.printStackTrace();
 		}
 
-		return response == null ? new ResponseEntity<>(HttpStatus.NO_CONTENT) :
-			new ResponseEntity<>(response, HttpStatus.OK);
+		return response == null ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
+				: new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/getAnimeById/{idAnime}")
-	private ResponseEntity<Anime> getAnimeById(@PathVariable("idAnime") int idAnime) {
+	private ResponseEntity<Anime> getAnimeById(@PathVariable("idAnime") int idAnime)
+	{
 
 		Anime response = null;
-		try {
+		try
+		{
 			response = this.animeService.getAnime(idAnime);
-		}catch(IOException e) {
+		}
+		catch (IOException e)
+		{
 			e.printStackTrace();
 		}
-		
-		return response == null ? new ResponseEntity<>(HttpStatus.NO_CONTENT) :
-			new ResponseEntity<>(response, HttpStatus.OK);
+
+		return response == null ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
+				: new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	@PutMapping(value = "/updateAnime")
-	private ResponseEntity<?> updateAnime(@RequestBody Anime anime) {
+	private ResponseEntity<?> updateAnime(@RequestBody Anime anime)
+	{
 
-		try {
+		try
+		{
 			this.animeService.updateAnime(anime);
-		}catch(IOException e) {
+		}
+		catch (IOException e)
+		{
 			e.printStackTrace();
 		}
 
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
+
 	@DeleteMapping("/deleteAnime/{id}")
-	public ResponseEntity<?> deleteAnime(@PathVariable("id") int id) {
-		
-		try {
-		this.animeService.deleteAnime(id);
-		
-		}catch(IOException e) {
+	public ResponseEntity<?> deleteAnime(@PathVariable("id") int id)
+	{
+
+		try
+		{
+			this.animeService.deleteAnime(id);
+		}
+		catch (IOException e)
+		{
 			e.printStackTrace();
 		}
 
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
-	@PostMapping(value="/exportPdf", produces = MediaType.APPLICATION_PDF_VALUE)
-	public ResponseEntity<InputStreamResource> exportPdfAnime(@RequestBody String animes) throws IOException {
-        List<Anime> animeList = this.mp.readValue(animes, new TypeReference<List<Anime>>(){});
+
+	@PostMapping(value = "/exportPdf", produces = MediaType.APPLICATION_PDF_VALUE)
+	public ResponseEntity<InputStreamResource> exportPdfAnime(@RequestBody String animes) throws IOException
+	{
+		List<Anime> animeList = this.mp.readValue(animes, new TypeReference<List<Anime>>() {
+		});
 		
-        ByteArrayInputStream bis = PDFGenerator.buildPDF(animeList);
- 
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Disposition", "inline; filename=animes.pdf");
-        headers.setContentType(MediaType.APPLICATION_PDF);
- 
-        return new ResponseEntity<>(
-                new InputStreamResource(bis),
-                headers, 
-                HttpStatus.OK);
-    }
-	
+		PDF<Anime> pdf = new PDFGenerator<>();
+
+		ByteArrayInputStream bis = pdf.buildPDF(animeList);
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition", "inline; filename=animes.pdf");
+		headers.setContentType(MediaType.APPLICATION_PDF);
+
+		return new ResponseEntity<>(new InputStreamResource(bis), headers, HttpStatus.OK);
+	}
+
 }

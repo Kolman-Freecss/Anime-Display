@@ -7,6 +7,10 @@ import java.util.List;
 import com.ragna.pojos.Gender;
 import com.ragna.pojos.animation.Anime;
 
+/**
+ * Used as an alternative of BBDD
+ * */
+@Deprecated
 public class MockFactory {
 
 	private static int currentIdAnime = 0;

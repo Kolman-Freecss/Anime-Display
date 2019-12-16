@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AnimeService } from '../../../services/anime.service'
-import { Anime } from '../anime';
+import { Anime } from '../../../model/anime';
 import { Gender } from '../../../mocks/mock-gender';
 
 @Component({

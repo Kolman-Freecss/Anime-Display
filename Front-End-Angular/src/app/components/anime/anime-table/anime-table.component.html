@@ -19,7 +19,9 @@
           </td>
         </a>
         <td>{{anime.name}}</td>
+        <td>{{anime.website}}</td>
         <td>{{anime.gender}}</td>
+        <td>{{anime.isFinished}}</td>
         <td *ngIf="listAnime.length > 1">
           <button (click)="deleteAnime(i)" type="button" class="btn btn-outline-danger">Delete</button>
         </td>

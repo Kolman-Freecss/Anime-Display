@@ -1,4 +1,4 @@
-import { Anime } from '../components/anime/anime';
+import { Anime } from '../model/anime';
 import { Injectable } from '@angular/core';
 import { Gender } from './mock-gender';
 

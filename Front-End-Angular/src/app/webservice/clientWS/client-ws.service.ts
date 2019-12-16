@@ -4,7 +4,7 @@ import { LoggerService } from '../../services/logger.service';
 import { MessageService } from '../../services/message.service';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-import { Anime } from '../../components/anime/anime';
+import { Anime } from '../../model/anime';
 
 
 const WS_URL = 'http://localhost:8080/anime-display/api/' // URL to webapi

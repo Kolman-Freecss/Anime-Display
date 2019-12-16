@@ -1,4 +1,4 @@
-import { Gender } from '../../mocks/mock-gender';
+import { Gender } from '../mocks/mock-gender';
 
 export class Anime{
     id?: number;

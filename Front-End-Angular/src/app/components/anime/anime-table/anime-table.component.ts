@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Anime } from '../anime';
+import { Anime } from '../../../model/anime';
 import { AnimeService } from '../../../services/anime.service';
 import { LoggerService } from '../../../services/logger.service';
 import { Router } from '@angular/router';
